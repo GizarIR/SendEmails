@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+
+	<title>{{title}}</title>
+	<link type="text/css" href="{% static 'app/css/styles.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+   <div class="header">
+        <div class="inner-header">
+            <div class="logo-container">
+                <h1>Name of app</h1>
+            </div>
+
+            <ul class="navigation">
+                <a href="#"><li>Main</li></a>
+                <a href="#"><li>About</li></a>
+                <a href="#"><li>Contacts</li></a>
+            </ul>
+        </div>
+    </div>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>

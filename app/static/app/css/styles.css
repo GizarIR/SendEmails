@@ -1,0 +1,116 @@
+.header{
+    color: white;
+    background-color: black;
+}
+
+.inner-header{
+    margin-left: 3%;
+}
+
+.logo-container{
+    display: inline-block;
+}
+
+.navigation{
+    margin-top: 30px;
+    float: right;
+}
+
+.navigation a{
+    display: table;
+    height: 100%;
+    float: left;
+    padding: 0px 20px;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.navigation a li{
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 20px;
+    color: white;
+}
+
+.navigation a:hover{
+    background-color: gray;
+    color: #101010;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.content{
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: medium;
+    
+}
+
+.content td{
+    vertical-align: top;
+}
+
+.content td#col1{
+    width: 20%; /* Ширина первой колонки */
+    /* background: #fc0; Цвет фона первой колонки */
+}
+
+.content td#col2{
+    width: 60%; /* Ширина второй колонки */
+    /* background: #f0f0f0; Цвет фона второй колонки */
+    background: rgb(249, 247, 240); /* Цвет фона */
+}
+
+.content td#col3{
+    width: 20%; /* Ширина третьей колонки */
+    /* background: #fc0; Цвет фона третьей колонки */
+}
+
+.content hr{
+    border: none;
+    color: black;
+    background-color: black;
+    height: 1px;
+}
+
+.content img.fig{
+    float: left; /* Обтекание картинки по левому краю */
+    padding-right: 10px; /* Отступ слева */
+    padding-bottom: 10px; /* Отступ снизу */
+}
+
+.content ul#list-skills{
+    /* color: blue; */ 
+    list-style-position: inside
+}
+
+.content p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.content-center{
+    margin-left: 20%; /* Отступ слева */
+    margin-right: 20%; /* Отступ справа */
+    background: rgb(249, 247, 240); /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+}
+
+.content-center hr{
+    border: none;
+    color: black;
+    background-color: black;
+    height: 1px;
+}
+
+.content-center img.fig-left{
+    float: left; /* Обтекание картинки по левому краю */
+    padding-right: 10px; /* Отступ слева */
+    padding-bottom: 10px; /* Отступ снизу */
+}
+
+.content-center img.fig-right{
+    float: right; /* Обтекание картинки по левому краю */
+    padding-right: 10px; /* Отступ слева */
+    padding-bottom: 10px; /* Отступ снизу */
+}
