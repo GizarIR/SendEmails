@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+  <div class="content-center">
+    <h2>{{title}}</h2>
+    <hr>
+    <ul>
+	{% for m in mailings %}
+		<li>
+            {{ m.pk }}
+            <a href="{{ p.get_absolute_url }}">{{m.name}}</a>
+			{% autoescape off %}
+				{{m.email_template|linebreaks|truncatewords:50}}
+			{% endautoescape %}
+            {{m.emails}}
+		</li>
+	{% endfor %}
+    </ul>
+  </div>
+{% endblock %}
