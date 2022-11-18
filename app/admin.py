@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+
+from .models import *
+
+class MailingAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'email_template',
+        'emails',
+    ]
+
+
+admin.site.register(Mailing, MailingAdmin)
+
