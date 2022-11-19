@@ -9,7 +9,7 @@ class Mailing(models.Model):
     emails = models.TextField(blank=True, verbose_name="Список рассылки")
 
     def __str__(self):
-        return f"{self.pk}, {self.name}, {self.email_template}, {self.emails}"
+        return f"{self.pk}, {self.name}, {self.emails}"
 
     def get_absolute_url(self):
         # home  - name of route

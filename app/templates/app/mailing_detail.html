@@ -3,27 +3,26 @@
 {% block content %}
     <h2>{{title}}</h2>
     <hr>
-    <div class="content">
-        <table>
+    <div class="content-center">
+
+        <table id="table">
+            <tr style="background-color: #9B859D">
+                <th>Номер</th>
+                <th>Рассылка</th>
+                <th>Шаблон</th>
+                <th>Список рассылки</th>
+            </tr>
             <tr>
-                <td id="col1">
-                    <h2>Наименование</h2>
-                    <hr>
-                    {{object.name}}
-                </td>
-                <td id="col2">
-                    <h2>Шаблон</h2>
-                    <hr>
+                <td>{{ object.pk }}</td>
+                <td style="width: 20%; text-align:left; vertical-align: middle">{{object.name}}</td>
+                <td style="width: 60%">
                     {% autoescape off %}
-                    {{object.email_template|linebreaks|truncatewords:50}}
+                    {{object.email_template}}
                     {% endautoescape %}
                 </td>
-                <td id="col3">
-                    <h2>Список получателей</h2>
-                    <hr>
-                    {{object.emails}}
-                </td>
+                <td style="text-align:left; vertical-align: top; width: 20%">{{object.emails}}</td>
             </tr>
         </table>
+
     </div>
 {% endblock %}

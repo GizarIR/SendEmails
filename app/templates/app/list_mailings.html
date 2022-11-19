@@ -10,6 +10,7 @@
                 <th>Рассылка</th>
                 <th>Шаблон</th>
                 <th>Список рассылки</th>
+                <th>Операции</th>
             </tr>
             {% for m in mailings %}
             <tr>
@@ -17,6 +18,9 @@
                 <td style="width: 200px"><a href="{{ m.get_absolute_url }}">{{m.name}}</a></td>
                 <td>{{m.email_template|truncatewords:5}}</td>
                 <td style="text-align:left">{{m.emails|truncatewords:3}}</td>
+                <td>
+                    <a href="{% url 'update_mailing' m.pk %}"><button>Редактировать</button></a>
+                </td>
             </tr>
             {% endfor %}
         </table>
