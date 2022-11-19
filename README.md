@@ -1,1 +1,4 @@
-# SendEmails is app for mailing email by template. Example use send_mail
+# SendEmails
+Application demonstrates service for mailing email by template. 
+
+
