@@ -20,6 +20,8 @@
                 <td style="text-align:left">{{m.emails|truncatewords:3}}</td>
                 <td>
                     <a href="{% url 'update_mailing' m.pk %}"><button>Редактировать</button></a>
+                    <a href="{% url 'send_mailing' m.pk %}"><button>Отправить</button></a>
+
                 </td>
             </tr>
             {% endfor %}

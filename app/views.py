@@ -1,6 +1,9 @@
-from django.http import HttpResponseNotFound
-from django.shortcuts import render
+import smtplib
+
+from django.http import HttpResponseNotFound, HttpResponse
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.core.mail import EmailMultiAlternatives
 
 
 from .models import *
@@ -51,3 +54,28 @@ class MailingAddView(CreateView):
         context['title'] = "Добавление рассылки"
         return context
 
+
+def send_mailing(request, pk_mailing):
+    mailing = Mailing.objects.get(pk=pk_mailing)
+    mailing_list = mailing.emails.split(" ")
+    print(f'Список рассылки готов к отправке: {mailing_list}')
+    for email in mailing_list:
+        # здесь можно использовать Celery для асинхронной рассылки
+        msg = EmailMultiAlternatives(
+            subject=mailing.name,
+            body='',
+            from_email='admin@admin.ru',
+            to=[email],
+        )
+        msg.attach_alternative(mailing.email_template, "text/html")
+
+        print(f'Отправка письма подписчику {email}...')
+        try:
+            msg.send()
+        except smtplib.SMTPRecipientsRefused:
+            print(f'Error: Ошибка отправки письма по адресу: {email}')
+    return render(
+        request,
+        'app/index.html',
+        {'my_text': f'Рассылка: {mailing.name} отправлена', 'title': 'Статус рассылки'}
+    )

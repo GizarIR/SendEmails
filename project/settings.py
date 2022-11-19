@@ -148,15 +148,16 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'full',
         'height': 200,
         'width': "100%",
-        # 'extraPlugins': ','.join([
-        #     'youtube',
-        # ]),
+        'extraPlugins': ','.join([
+            'youtube',
+        ]),
         'toolbar_YourCustomToolbarConfig': [
             {'name': 'yourcustomtools', 'items': [
                 # put the name of your editor.ui.addButton here
+                # Folder youtube shoude be in static for app and common dir static
                 'Preview',
                 'Maximize',
-                # 'Youtube'
+                'Youtube'
             ]}],
     },
 }
@@ -178,7 +179,7 @@ SERVER_EMAIL = ADMIN_EMAIL_SERVER
 # Selector for change send email mode (asynchronously / synchronously)
 USE_CELERY_SEND_EMAIL = True
 # for tests
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
