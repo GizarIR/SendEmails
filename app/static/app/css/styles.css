@@ -90,8 +90,8 @@
 }
 
 .content-center{
-    margin-left: 20%; /* Отступ слева */
-    margin-right: 20%; /* Отступ справа */
+    margin-left: 10%; /* Отступ слева */
+    margin-right: 10%; /* Отступ справа */
     background: rgb(249, 247, 240); /* Цвет фона */
     padding: 10px; /* Поля вокруг текста */
 }
@@ -113,4 +113,15 @@
     float: right; /* Обтекание картинки по левому краю */
     padding-right: 10px; /* Отступ слева */
     padding-bottom: 10px; /* Отступ снизу */
+}
+
+
+/* Нечетные строки */
+#table tr:nth-child(odd){
+	background: #fff;
+}
+
+/* Четные строки */
+#table tr:nth-child(even){
+	background: #F7F7F7;
 }

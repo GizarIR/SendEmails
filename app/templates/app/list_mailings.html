@@ -3,18 +3,25 @@
 {% block content %}
   <div class="content-center">
     <h2>{{title}}</h2>
-    <hr>
-    <ul>
-	{% for m in mailings %}
-		<li>
-            {{ m.pk }}
-            <a href="{{ p.get_absolute_url }}">{{m.name}}</a>
-			{% autoescape off %}
-				{{m.email_template|linebreaks|truncatewords:50}}
-			{% endautoescape %}
-            {{m.emails}}
-		</li>
-	{% endfor %}
-    </ul>
+    {% if mailings %}
+        <table id="table">
+            <tr style="background-color: #9B859D">
+                <th>Номер</th>
+                <th>Рассылка</th>
+                <th>Шаблон</th>
+                <th>Список рассылки</th>
+            </tr>
+            {% for m in mailings %}
+            <tr>
+                <td>{{ m.pk }}</td>
+                <td style="width: 200px"><a href="{{ m.get_absolute_url }}">{{m.name}}</a></td>
+                <td>{{m.email_template|truncatewords:5}}</td>
+                <td style="text-align:left">{{m.emails|truncatewords:3}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h3>Рассылок не найдено</h3>
+    {% endif %}
   </div>
 {% endblock %}

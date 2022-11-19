@@ -13,7 +13,7 @@ class Mailing(models.Model):
 
     def get_absolute_url(self):
         # home  - name of route
-        return reverse('home', kwargs={'pk': self.pk})
+        return reverse('detail_mailing', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = 'Рассылка'
