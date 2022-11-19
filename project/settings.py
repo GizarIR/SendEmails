@@ -12,6 +12,18 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+PASSWORD_EMAIL = os.environ.get("PASSWORD_EMAIL")
+EMAIL_ADMIN = os.environ.get("EMAIL_ADMIN")
+ADMIN_EMAIL_SERVER = os.environ.get("ADMIN_EMAIL_SERVER")
+MY_EMAIL_HOST = os.environ.get("MY_EMAIL_HOST")
+MY_EMAIL_HOST_USER = os.environ.get("MY_EMAIL_HOST_USER")
+MY_DJANGO_SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0f#58l%d@_q7hq5k=mx#yd-z1wwzo_9$tau=kky%tn5edc@c8%'
+SECRET_KEY = MY_DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -148,3 +160,29 @@ CKEDITOR_CONFIGS = {
             ]}],
     },
 }
+
+# setup email block
+
+EMAIL_HOST = MY_EMAIL_HOST
+EMAIL_PORT = 465
+EMAIL_HOST_USER = MY_EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = PASSWORD_EMAIL
+EMAIL_USE_SSL = True
+
+ADMINS = [
+    ('NameAdmin', EMAIL_ADMIN),
+]
+SERVER_EMAIL = ADMIN_EMAIL_SERVER
+
+# Block setup Redis and Celery
+# Selector for change send email mode (asynchronously / synchronously)
+USE_CELERY_SEND_EMAIL = True
+# for tests
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+# End AFP
